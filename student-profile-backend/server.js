@@ -1,12 +1,28 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const app = express();
 
+// Middleware for security headers
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      imgSrc: ["'self'", "https://easy-project.vercel.app/favicon.ico"],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'"],
+      // You can add more directives here as needed
+    }
+  }
+}));
+
+// Middleware for CORS and JSON body parsing
 app.use(cors());
 app.use(bodyParser.json());
 
+// Constant data
 let profileData = {
   personalDetails: {
     name: "John Doe",
@@ -24,13 +40,16 @@ let profileData = {
   ]
 };
 
+// API route to get profile data
 app.get('/api/profile', (req, res) => {
   res.json(profileData);
 });
 
+// API route to update profile data
 app.put('/api/profile', (req, res) => {
   profileData = req.body;
   res.json(profileData);
 });
 
-module.exports = app;  // Export the Express app
+// Export the app for Vercel
+module.exports = app;
