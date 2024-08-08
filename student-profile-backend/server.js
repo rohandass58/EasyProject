@@ -40,6 +40,11 @@ let profileData = {
   ]
 };
 
+// Root route
+app.get('/', (req, res) => {
+  res.send('Welcome to the API. Navigate to /api/profile to access the profile data.');
+});
+
 // API route to get profile data
 app.get('/api/profile', (req, res) => {
   res.json(profileData);
