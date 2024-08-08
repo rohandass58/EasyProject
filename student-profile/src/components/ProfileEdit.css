@@ -1,0 +1,27 @@
+/* ProfileEdit.css */
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .loading {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.5em;
+  }
+  
